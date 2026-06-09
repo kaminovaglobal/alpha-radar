@@ -1,5 +1,19 @@
 from models import RSSItem
 
+def categorize(title):
+
+    title = title.lower()
+
+    if "grant" in title:
+        return "Grant"
+
+    if "funding" in title:
+        return "Funding"
+
+    if "hack" in title:
+        return "Security"
+
+    return "General"
 
 def parse_entry(entry):
 
@@ -9,5 +23,6 @@ def parse_entry(entry):
         published=entry.get(
             "published",
             "Unknown"
-        )
+        ),
+        category=entry.get("category")
     )

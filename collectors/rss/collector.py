@@ -5,6 +5,7 @@ from parser import parse_entry
 
 
 all_items = []
+seen_links = set()
 
 for url in RSS_FEEDS:
 
