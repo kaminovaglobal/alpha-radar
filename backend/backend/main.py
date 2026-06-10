@@ -1,1 +1,0 @@
-print("Welcome to Alpha Radar")
