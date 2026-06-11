@@ -9,5 +9,25 @@ class Settings:
         "OPENAI_API_KEY"
     )
 
+ROLES = [
+
+    "USER",
+
+    "ADMIN",
+
+    "ANALYST",
+
+    "ENTERPRISE"
+]
+PLANS = [
+
+    "FREE",
+
+    "PRO",
+
+    "PREMIUM",
+
+    "ENTERPRISE"
+]
 
 settings = Settings()
