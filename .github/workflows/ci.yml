@@ -30,3 +30,46 @@ jobs:
         run: |
           # Only runs if pytest is configured, otherwise handles gracefully
           if command -v pytest &> /dev/null; then pytest; else echo "Pytest not installed or no tests found"; fi
+- name: Install Frontend
+
+  run: |
+
+    cd frontend
+
+    npm install
+
+- name: Build Frontend
+
+  run: |
+
+    cd frontend
+
+    npm run build
+
+- name: Build Backend Docker
+
+  run: |
+
+    docker build -t backend ./backend
+
+- name: Build Frontend Docker
+
+  run: |
+
+    docker build -t frontend ./frontend
+
+- name: Security Scan
+
+  uses: securecodewarrior/github-action-add-sarif@v1
+
+- name: Bandit Scan
+
+  run: |
+
+    bandit -r backend
+
+- name: Safety Scan
+
+  run: |
+
+    safety check                
