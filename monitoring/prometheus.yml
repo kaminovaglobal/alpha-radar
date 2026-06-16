@@ -1,0 +1,80 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+rule_files: []
+
+scrape_configs:
+
+  # ==========================
+  # Prometheus Self Monitoring
+  # ==========================
+  - job_name: "prometheus"
+
+    static_configs:
+      - targets:
+          - localhost:9090
+
+  # ==========================
+  # Alpha Radar FastAPI Backend
+  # ==========================
+  - job_name: "alpha-radar-backend"
+
+    metrics_path: /metrics
+
+    static_configs:
+      - targets:
+          - backend:8000
+
+  # ==========================
+  # PostgreSQL Exporter
+  # (Enable Later)
+  # ==========================
+  - job_name: "postgres"
+
+    static_configs:
+      - targets:
+          - postgres-exporter:9187
+
+  # ==========================
+  # Redis Exporter
+  # (Enable Later)
+  # ==========================
+  - job_name: "redis"
+
+    static_configs:
+      - targets:
+          - redis-exporter:9121
+
+  # ==========================
+  # Celery Exporter
+  # (Enable Later)
+  # ==========================
+  - job_name: "celery"
+
+    static_configs:
+      - targets:
+          - celery-exporter:9540
+
+  # ==========================
+  # Node Exporter
+  # System Metrics
+  # CPU
+  # RAM
+  # Disk
+  # ==========================
+  - job_name: "node"
+
+    static_configs:
+      - targets:
+          - node-exporter:9100
+
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: "backend"
+
+    static_configs:
+      - targets:
+          - backend:8000          
