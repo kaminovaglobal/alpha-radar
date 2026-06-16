@@ -25,6 +25,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the backend source code
 COPY . .
 ENV PYTHONPATH=/app
-# Run your backend server (adjust main:app if using FastAPI/Uvicorn, or manage.py for Django)
+# Run backend server (adjust main:app if using FastAPI/Uvicorn, or manage.py for Django)
 #CMD ["python", "app/core/main.py"]
 CMD ["uvicorn", "app.core.main:app", "--host", "0.0.0.0", "--port", "8000"]
